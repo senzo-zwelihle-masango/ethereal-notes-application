@@ -1,11 +1,18 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useConvexAuth } from 'convex/react'
+import { SignUpButton } from '@clerk/nextjs'
 import { Container } from '@/components/ui/container'
 import { Spotlight } from '@/components/ui/spotlight'
 import { Button } from '@/components/ui/button'
+import { Spinner } from '../ui/spinner'
+import { SparklesIcon } from 'lucide-react'
 
 const Hero = () => {
+  const { isAuthenticated, isLoading } = useConvexAuth()
   return (
     <Container
       size={'2xl'}
@@ -26,15 +33,40 @@ const Hero = () => {
               Ethereal Notes, Where Productivity Meets Elegance
             </h1>
             <p className="text-muted-foreground mx-auto my-8 max-w-2xl text-xl">
-              Ethereal Notes takes your organization and creativity to new heights. Whether you&apos;re a
-              student, professional, or creative thinker.
+              Ethereal Notes takes your organization and creativity to new heights. Whether
+              you&apos;re a student, professional, or creative thinker.
             </p>
+            {isLoading && <Spinner />}
+            {!isAuthenticated && !isLoading && (
+              <>
+                <Button asChild>
+                  <SignUpButton mode="modal">Sign Up</SignUpButton>
+                </Button>
+              </>
+            )}
+             {isAuthenticated && !isLoading && (
+              <>
+                <div className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
+                  <div key={1}>
+                    <Button>
+                      <Link href={"/documents"}>
+                        <span className="text-nowrap">Start Building</span>
+                      </Link>
 
-            <Button asChild>
-              <Link href="#">
-                <span className="btn-label">Start Building</span>
-              </Link>
-            </Button>
+                      <SparklesIcon />
+                    </Button>
+                  </div>
+                  <Button key={2} asChild variant="ghost">
+                    <Link
+                      href="https://ethereal-notes-application.vercel.app/preview/j5761er84msh4dxy91mwd2ena57rjqw2"
+                      target="_blank"
+                    >
+                      <span className="text-nowrap">Tutorial</span>
+                    </Link>
+                  </Button>
+                </div>
+              </>
+            )}
           </div>
         </div>
 

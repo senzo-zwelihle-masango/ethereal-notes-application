@@ -2,11 +2,9 @@ import { metadata } from '@/lib/metadata'
 import { polysansSlim, polysans, polysansMedian, polysansBulky } from '@/lib/font'
 import { ReactLenis } from '@/components/providers/lenis-provider'
 import { ConvexClientProvider } from '@/components/providers/convex-provider'
+import { EdgeStoreProvider } from '@/components/providers/edgestore-provider'
 import { NextThemeProvider } from '@/components/providers/theme-provider'
 import { ModalProvider } from '@/components/providers/modal-provider'
-import { NextSSRPlugin } from '@uploadthing/react/next-ssr-plugin'
-import { extractRouterConfig } from 'uploadthing/server'
-import { ourFileRouter } from '@/app/api/uploadthing/core'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
@@ -38,23 +36,25 @@ export default function RootLayout({
       }}
     >
       <ConvexClientProvider>
-        <html lang="en" suppressHydrationWarning>
-          <body
-            className={`${polysansSlim.variable} ${polysans.variable} ${polysansMedian.variable} ${polysansBulky.variable} font-polysans-slim antialiased`}
-          >
-            <NextThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
+        <EdgeStoreProvider>
+          <html lang="en" suppressHydrationWarning>
+            <body
+              className={`${polysansSlim.variable} ${polysans.variable} ${polysansMedian.variable} ${polysansBulky.variable} font-polysans-slim antialiased`}
             >
-              {children}
-              <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-              <ModalProvider />
-              <Toaster theme="system" />
-            </NextThemeProvider>
-          </body>
-        </html>
+              <NextThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                {children}
+
+                <ModalProvider />
+                <Toaster theme="system" />
+              </NextThemeProvider>
+            </body>
+          </html>
+        </EdgeStoreProvider>
       </ConvexClientProvider>
     </ReactLenis>
   )

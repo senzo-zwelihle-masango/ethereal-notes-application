@@ -1,9 +1,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'uploadthing/tw/v4';
 
 @source '../node_modules/@blocknote/shadcn';
-@source '../node_modules/@uploadthing/react/dist';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -158,7 +156,6 @@ html.lenis body {
   transition-duration: 1ms;
   transition-behavior: allow-discrete;
 }
-
 
 @layer utilities {
   .slide-in-up {
