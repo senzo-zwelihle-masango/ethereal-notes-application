@@ -6,7 +6,7 @@ const NextjsIcon = (props: SVGProps<SVGSVGElement>) => (
     xmlns="http://www.w3.org/2000/svg"
     fillRule="evenodd"
     clipRule="evenodd"
-  strokeLinejoin="round"
+    strokeLinejoin="round"
     strokeMiterlimit="2"
     {...props}
   >

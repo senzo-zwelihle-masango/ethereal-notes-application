@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import { ChevronsUpDown } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ChevronsUpDown } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,18 +9,18 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu'
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { useUser, SignOutButton } from "@clerk/clerk-react";
+} from '@/components/ui/sidebar'
+import { useUser, SignOutButton } from '@clerk/clerk-react'
 
 export function SiteUser() {
-  const { isMobile } = useSidebar();
-  const { user } = useUser();
+  const { isMobile } = useSidebar()
+  const { user } = useUser()
 
   return (
     <SidebarMenu>
@@ -38,9 +38,7 @@ export function SiteUser() {
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{user?.fullName}</span>
                 <span className="truncate text-xs">
-                  {user?.emailAddresses
-                    ?.map((email) => email.emailAddress)
-                    .join(", ")}
+                  {user?.emailAddresses?.map((email) => email.emailAddress).join(', ')}
                 </span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
@@ -48,7 +46,7 @@ export function SiteUser() {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
+            side={isMobile ? 'bottom' : 'right'}
             align="end"
             sideOffset={4}
           >
@@ -56,18 +54,12 @@ export function SiteUser() {
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={user?.imageUrl} alt={user?.imageUrl} />
-                  <AvatarFallback className="rounded-lg">
-                    {user?.firstName}
-                  </AvatarFallback>
+                  <AvatarFallback className="rounded-lg">{user?.firstName}</AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">
-                    {user?.firstName}
-                  </span>
+                  <span className="truncate font-semibold">{user?.firstName}</span>
                   <span className="truncate text-xs">
-                    {user?.emailAddresses
-                      ?.map((email) => email.emailAddress)
-                      .join(", ")}
+                    {user?.emailAddresses?.map((email) => email.emailAddress).join(', ')}
                   </span>
                 </div>
               </div>
@@ -80,5 +72,5 @@ export function SiteUser() {
         </DropdownMenu>
       </SidebarMenuItem>
     </SidebarMenu>
-  );
+  )
 }

@@ -1,55 +1,50 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import { useParams } from "next/navigation";
-import { useMutation } from "convex/react";
-import { api } from "@/convex/_generated/api";
-import { Id } from "@/convex/_generated/dataModel";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import { useCoverImage } from "@/hooks/use-cover-image";
-import { useEdgeStore } from "@/components/providers/edgestore-provider";
-import { ImageDropzone } from "@/components/tools/image-dropzone";
+import { useState } from 'react'
+import { useParams } from 'next/navigation'
+import { useMutation } from 'convex/react'
+import { api } from '@/convex/_generated/api'
+import { Id } from '@/convex/_generated/dataModel'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { useCoverImage } from '@/hooks/use-cover-image'
+import { useEdgeStore } from '@/components/providers/edgestore-provider'
+import { ImageDropzone } from '@/components/tools/image-dropzone'
 
 const CoverImageModal = () => {
-  const params = useParams();
-  const update = useMutation(api.documents.update);
-  const coverImage = useCoverImage();
-  const { edgestore } = useEdgeStore();
+  const params = useParams()
+  const update = useMutation(api.documents.update)
+  const coverImage = useCoverImage()
+  const { edgestore } = useEdgeStore()
 
-  const [file, setFile] = useState<File>();
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [file, setFile] = useState<File>()
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const onClose = () => {
-    setFile(undefined);
-    setIsSubmitting(false);
-    coverImage.onClose();
-  };
+    setFile(undefined)
+    setIsSubmitting(false)
+    coverImage.onClose()
+  }
 
   const onChange = async (file?: File) => {
     if (file) {
-      setIsSubmitting(true);
-      setFile(file);
+      setIsSubmitting(true)
+      setFile(file)
 
       const res = await edgestore.publicFiles.upload({
         file,
         options: {
           replaceTargetUrl: coverImage.url,
         },
-      });
+      })
 
       await update({
-        id: params.documentId as Id<"documents">,
+        id: params.documentId as Id<'documents'>,
         coverImage: res.url,
-      });
+      })
 
-      onClose();
+      onClose()
     }
-  };
+  }
   return (
     <Dialog open={coverImage.isOpen} onOpenChange={coverImage.onClose}>
       <DialogTitle></DialogTitle>
@@ -65,7 +60,7 @@ const CoverImageModal = () => {
         />
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default CoverImageModal;
+export default CoverImageModal

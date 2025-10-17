@@ -42,9 +42,9 @@ const Showcase = () => {
                 Perfectly Captured on Any Device.
               </h1>
               <p className="mt-8 max-w-2xl text-pretty">
-                Ethereal Notes syncs your ideas seamlessly across every screen. Whether you&apos;re on
-                the go with your phone, deep in focus on your tablet, or powering through tasks on
-                your desktop, your notes are always ready, right where you left them. Capture
+                Ethereal Notes syncs your ideas seamlessly across every screen. Whether you&apos;re
+                on the go with your phone, deep in focus on your tablet, or powering through tasks
+                on your desktop, your notes are always ready, right where you left them. Capture
                 inspiration, organize projects, and access everything, everywhere.
               </p>
             </div>

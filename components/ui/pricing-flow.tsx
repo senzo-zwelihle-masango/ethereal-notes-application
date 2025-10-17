@@ -1,16 +1,14 @@
-"use client"
+'use client'
 
-import { cn } from "@/lib/utils"
-import { useEffect, useRef, useState } from "react"
-
-
+import { cn } from '@/lib/utils'
+import { useEffect, useRef, useState } from 'react'
 
 export interface PriceFlowProps {
   value: number
   className?: string
 }
 
-export default function PriceFlow({ value, className = "" }: PriceFlowProps) {
+export default function PriceFlow({ value, className = '' }: PriceFlowProps) {
   const [prevValue, setPrevValue] = useState(value)
 
   // Create refs for each digit position (tens and ones)
@@ -27,30 +25,25 @@ export default function PriceFlow({ value, className = "" }: PriceFlowProps) {
       const nextOnes = nextOnesRef.current
 
       // Animate tens digit if it changed
-      if (
-        prevTens &&
-        nextTens &&
-        Math.floor(value / 10) !== Math.floor(prevValue / 10)
-      ) {
-        const tensChanged =
-          Math.floor(value / 10) !== Math.floor(prevValue / 10)
+      if (prevTens && nextTens && Math.floor(value / 10) !== Math.floor(prevValue / 10)) {
+        const tensChanged = Math.floor(value / 10) !== Math.floor(prevValue / 10)
 
         if (tensChanged) {
           if (Math.floor(value / 10) > Math.floor(prevValue / 10)) {
-            prevTens.classList.add("slide-out-up")
-            nextTens.classList.add("slide-in-up")
+            prevTens.classList.add('slide-out-up')
+            nextTens.classList.add('slide-in-up')
           } else {
-            prevTens.classList.add("slide-out-down")
-            nextTens.classList.add("slide-in-down")
+            prevTens.classList.add('slide-out-down')
+            nextTens.classList.add('slide-in-down')
           }
 
           const handleTensAnimationEnd = () => {
-            prevTens.classList.remove("slide-out-up", "slide-out-down")
-            nextTens.classList.remove("slide-in-up", "slide-in-down")
-            prevTens.removeEventListener("animationend", handleTensAnimationEnd)
+            prevTens.classList.remove('slide-out-up', 'slide-out-down')
+            nextTens.classList.remove('slide-in-up', 'slide-in-down')
+            prevTens.removeEventListener('animationend', handleTensAnimationEnd)
           }
 
-          prevTens.addEventListener("animationend", handleTensAnimationEnd)
+          prevTens.addEventListener('animationend', handleTensAnimationEnd)
         }
       }
 
@@ -62,23 +55,20 @@ export default function PriceFlow({ value, className = "" }: PriceFlowProps) {
           // Add a small delay for the ones digit to create staggered effect
           setTimeout(() => {
             if (value % 10 > prevValue % 10) {
-              prevOnes.classList.add("slide-out-up")
-              nextOnes.classList.add("slide-in-up")
+              prevOnes.classList.add('slide-out-up')
+              nextOnes.classList.add('slide-in-up')
             } else {
-              prevOnes.classList.add("slide-out-down")
-              nextOnes.classList.add("slide-in-down")
+              prevOnes.classList.add('slide-out-down')
+              nextOnes.classList.add('slide-in-down')
             }
 
             const handleOnesAnimationEnd = () => {
-              prevOnes.classList.remove("slide-out-up", "slide-out-down")
-              nextOnes.classList.remove("slide-in-up", "slide-in-down")
-              prevOnes.removeEventListener(
-                "animationend",
-                handleOnesAnimationEnd
-              )
+              prevOnes.classList.remove('slide-out-up', 'slide-out-down')
+              nextOnes.classList.remove('slide-in-up', 'slide-in-down')
+              prevOnes.removeEventListener('animationend', handleOnesAnimationEnd)
             }
 
-            prevOnes.addEventListener("animationend", handleOnesAnimationEnd)
+            prevOnes.addEventListener('animationend', handleOnesAnimationEnd)
           }, 50) // 50ms delay for staggered effect
         }
       }
@@ -88,14 +78,14 @@ export default function PriceFlow({ value, className = "" }: PriceFlowProps) {
   }, [value, prevValue])
 
   const formatValue = (val: number) => {
-    return val.toString().padStart(2, "0")
+    return val.toString().padStart(2, '0')
   }
 
   const prevFormatted = formatValue(prevValue)
   const currentFormatted = formatValue(value)
 
   return (
-    <span className={cn("relative inline-flex items-center", className)}>
+    <span className={cn('relative inline-flex items-center', className)}>
       <span className="relative inline-block overflow-hidden">
         {/* Tens digit */}
         <span

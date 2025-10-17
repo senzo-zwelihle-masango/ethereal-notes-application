@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { useSettings } from "@/hooks/use-settings";
-import ThemeSwitcher from "@/components/ui/theme-switcher";
+import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog'
+import { Label } from '@/components/ui/label'
+import { useSettings } from '@/hooks/use-settings'
+import ThemeSwitcher from '@/components/ui/theme-switcher'
 
 const SettingsModal = () => {
-  const settings = useSettings();
+  const settings = useSettings()
   return (
     <Dialog open={settings.isOpen} onOpenChange={settings.onClose}>
       <DialogContent>
@@ -21,7 +21,7 @@ const SettingsModal = () => {
         </div>
       </DialogContent>
     </Dialog>
-  );
-};
+  )
+}
 
-export default SettingsModal;
+export default SettingsModal

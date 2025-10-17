@@ -44,12 +44,12 @@ const Hero = () => {
                 </Button>
               </>
             )}
-             {isAuthenticated && !isLoading && (
+            {isAuthenticated && !isLoading && (
               <>
                 <div className="mt-12 flex flex-col items-center justify-center gap-2 md:flex-row">
                   <div key={1}>
                     <Button>
-                      <Link href={"/documents"}>
+                      <Link href={'/documents'}>
                         <span className="text-nowrap">Start Building</span>
                       </Link>
 

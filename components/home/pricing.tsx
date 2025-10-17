@@ -19,7 +19,7 @@ const Pricing = () => {
       id="pricing"
       className="relative overflow-hidden"
     >
-      <div className=" relative py-16 md:py-32">
+      <div className="relative py-16 md:py-32">
         <div className="mx-auto max-w-5xl px-6">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold text-balance md:text-4xl lg:text-5xl lg:tracking-tight">
@@ -31,14 +31,14 @@ const Pricing = () => {
             <div className="my-12">
               <div className="inline-flex items-center rounded-full border p-1">
                 <Button
-                  variant={!isAnnual ? "default" : "ghost"}
+                  variant={!isAnnual ? 'default' : 'ghost'}
                   className="relative w-24"
                   onClick={() => setIsAnnual(false)}
                 >
                   Monthly
                 </Button>
                 <Button
-                  variant={isAnnual ? "default" : "ghost"}
+                  variant={isAnnual ? 'default' : 'ghost'}
                   className="relative w-24"
                   onClick={() => setIsAnnual(true)}
                 >
@@ -57,7 +57,7 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex h-[650px] cursor-pointer flex-col overflow-hidden rounded-2xl border bg-card p-8 hover:shadow-lg transition-shadow"
+                className="group bg-card relative flex h-[650px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 transition-shadow hover:shadow-lg"
                 data-animate-card
               >
                 <div className="card-content relative z-10 flex h-full flex-col">
@@ -66,9 +66,7 @@ const Pricing = () => {
 
                   {/* Price & Duration */}
                   <div className="mb-6">
-                    <span className="text-foreground text-3xl font-semibold">
-                      R0
-                    </span>
+                    <span className="text-foreground text-3xl font-semibold">R0</span>
                     <span className="text-foreground/70 mx-2">•</span>
                     <span className="text-foreground/70">Perfect for personal use</span>
                   </div>
@@ -80,7 +78,8 @@ const Pricing = () => {
 
                   {/* Description */}
                   <p className="text-foreground/70 mb-6 flex-grow text-sm leading-relaxed">
-                    Perfect for trying out Ethereal Notes and personal note-taking. Get started with essential features.
+                    Perfect for trying out Ethereal Notes and personal note-taking. Get started with
+                    essential features.
                   </p>
 
                   {/* What's Included */}
@@ -124,11 +123,11 @@ const Pricing = () => {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-                className="group relative flex h-[650px] cursor-pointer flex-col overflow-hidden rounded-2xl border bg-card p-8 shadow-md hover:shadow-xl transition-shadow"
+                className="group bg-card relative flex h-[650px] cursor-pointer flex-col overflow-hidden rounded-2xl border p-8 shadow-md transition-shadow hover:shadow-xl"
                 data-animate-card
               >
                 {/* Gradient Accent */}
-                <div className="gradient-accent absolute top-0 right-0 h-4 w-32 rounded-bl-2xl bg-primary" />
+                <div className="gradient-accent bg-primary absolute top-0 right-0 h-4 w-32 rounded-bl-2xl" />
 
                 <div className="card-content relative z-10 flex h-full flex-col">
                   {/* Title */}
@@ -151,7 +150,8 @@ const Pricing = () => {
 
                   {/* Description */}
                   <p className="text-foreground/70 mb-6 flex-grow text-sm leading-relaxed">
-                    Everything in Free, plus advanced features for serious note-takers and teams. Unlock the full potential.
+                    Everything in Free, plus advanced features for serious note-takers and teams.
+                    Unlock the full potential.
                   </p>
 
                   {/* What's Included */}
