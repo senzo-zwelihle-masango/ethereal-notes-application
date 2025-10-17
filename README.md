@@ -10,7 +10,7 @@ The application features a versatile block-based editor powered by Blocknote, en
 
 ## Resources and useful links
 
-- Figma Design: <https://www.figma.com/community/file/1529103111138654776>
+- Figma Design: <https://www.figma.com/community/file/1560999971579687623/ethereal-notes-application>
 - Live Link: <https://ethereal-notes-application.vercel.app/>
 
 ## Tech Stack
